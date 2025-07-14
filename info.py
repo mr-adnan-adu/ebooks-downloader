@@ -1,0 +1,10 @@
+API_ID = "your_api_id"
+API_HASH = "your_api_hash"
+API_TOKEN = "your_bot_token"
+BOT_NAME = "eBookFilterBot"
+ADMINS = [123456789]
+INDEX_CHANNELS = [-100987654321]
+FILES_DATABASE_URL = "mongodb://localhost:27017/ebooks_db"
+FORMATS = ["PDF", "EPUB", "MOBI"]
+GENRES = ["Fiction", "Non-Fiction", "Science", "History"]
+LANGUAGES = ["English", "Spanish", "French"]

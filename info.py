@@ -1,5 +1,5 @@
-API_ID = "your_api_id"
-API_HASH = "your_api_hash"
+API_ID = "28853806"
+API_HASH = "fac54c9e5cb7f0c98dd6b08f7b89a0b0"
 API_TOKEN = "your_bot_token"
 BOT_NAME = "eBookFilterBot"
 ADMINS = [123456789]

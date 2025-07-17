@@ -17,7 +17,7 @@ app = Client(
     "bot",
     api_id=info.API_ID,
     api_hash=info.API_HASH,
-    bot_token=info.BOT_TOKEN,
+    bot_token=info.API_TOKEN,
     plugins=dict(root="plugins"),
     workdir="./",
     sleep_threshold=60,  # Sleep threshold for flood wait
@@ -54,7 +54,7 @@ async def start_bot_with_retry(max_retries=3):
             
         except (AuthKeyUnregistered, AuthKeyInvalid) as e:
             logger.error(f"❌ Authentication error: {e}")
-            logger.error("Please check your BOT_TOKEN, API_ID, and API_HASH")
+            logger.error("Please check your API_TOKEN, API_ID, and API_HASH")
             return
             
         except Exception as e:
@@ -96,7 +96,7 @@ if __name__ == "__main__":
 #     name="eBookFilterBot",
 #     api_id=API_ID,
 #     api_hash=API_HASH,
-#     bot_token=API_TOKEN,
+#     =API_TOKEN,
 #     plugins={"root": "plugins"}
 # )
 

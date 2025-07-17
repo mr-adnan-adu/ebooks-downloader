@@ -1,7 +1,7 @@
 API_ID = "28853806"
 API_HASH = "fac54c9e5cb7f0c98dd6b08f7b89a0b0"
-API_TOKEN = "your_bot_token"
-BOT_NAME = "eBookFilterBot"
+API_TOKEN = "8171741237:AAEsSLk7e0QOcg1WX2GiND4iLT6K6bAL594"
+BOT_NAME = "Testbookkkbot"
 ADMINS = [123456789]
 INDEX_CHANNELS = [-100987654321]
 FILES_DATABASE_URL = "mongodb://localhost:27017/ebooks_db"

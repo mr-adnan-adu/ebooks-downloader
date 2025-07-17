@@ -4,7 +4,7 @@ API_TOKEN = "8171741237:AAEsSLk7e0QOcg1WX2GiND4iLT6K6bAL594"
 BOT_NAME = "Testbookkkbot"
 ADMINS = [7695561317]
 INDEX_CHANNELS = [-1002752786741]
-FILES_DATABASE_URL = "mongodb://localhost:27017/ebooks_db"
+FILES_DATABASE_URL = "mongodb+srv://AMK-Save-Restricted-Content:hSgvCEAHbvzTjgjl@cluster0.jrzeth7.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 FORMATS = ["PDF", "EPUB", "MOBI"]
 GENRES = ["Fiction", "Non-Fiction", "Science", "History"]
 LANGUAGES = ["English", "Spanish", "French"]

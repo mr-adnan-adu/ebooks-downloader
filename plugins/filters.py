@@ -2,7 +2,11 @@ from pyrogram import Client, filters
 from database import ebooks_collection
 from utils import format_result
 
-search_filter = filters.group & filters.text & ~filters.command()
+# Custom filter to exclude commands
+def not_command_filter(_, __, message):
+    return not message.text.startswith("/")
+
+search_filter = filters.group & filters.text & filters.create(not_command_filter)
 
 @Client.on_message(search_filter)
 async def auto_filter(client, message):
@@ -16,4 +20,3 @@ async def auto_filter(client, message):
     }).limit(5)
     for result in results:
         await message.reply_text(format_result(result))
-

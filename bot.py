@@ -33,18 +33,20 @@ async def stop_bot():
     """Gracefully stop the bot"""
     global bot_running
     try:
-        if bot_running and not app.is_connected:
+        if bot_running and app.is_connected:  # Fixed: was "not app.is_connected"
             await app.stop()
             logger.info("✅ Bot stopped gracefully")
-    except:
-        pass
+    except Exception as e:
+        logger.error(f"Error stopping bot: {e}")
     finally:
         bot_running = False
 
 def signal_handler(sig, frame):
     """Handle shutdown signals"""
     logger.info("Received shutdown signal")
-    asyncio.create_task(stop_bot())
+    loop = asyncio.get_event_loop()
+    if loop.is_running():
+        loop.create_task(stop_bot())
     sys.exit(0)
 
 async def start_bot():
@@ -76,9 +78,11 @@ async def start_bot():
         await app.idle()
         
     except FloodWait as e:
-        logger.warning(f"⚠️ FloodWait error: Need to wait {e.x} seconds")
-        logger.info(f"⏳ Waiting for {e.x} seconds...")
-        await asyncio.sleep(e.x)
+        # Fixed: Use e.value instead of e.x for newer Pyrogram versions
+        wait_time = getattr(e, 'value', getattr(e, 'x', 30))
+        logger.warning(f"⚠️ FloodWait error: Need to wait {wait_time} seconds")
+        logger.info(f"⏳ Waiting for {wait_time} seconds...")
+        await asyncio.sleep(wait_time)
         logger.info("Retrying after FloodWait...")
         await start_bot()
         
@@ -120,6 +124,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+    
 # from pyrogram import Client
 # from info import API_ID, API_HASH, API_TOKEN, BOT_NAME
 

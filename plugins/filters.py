@@ -2,7 +2,9 @@ from pyrogram import Client, filters
 from database import ebooks_collection
 from utils import format_result
 
-@Client.on_message(filters.group & filters.text & ~filters.command)
+search_filter = filters.group & filters.text & ~filters.command()
+
+@Client.on_message(search_filter)
 async def auto_filter(client, message):
     query = message.text
     results = ebooks_collection.find({
@@ -14,3 +16,4 @@ async def auto_filter(client, message):
     }).limit(5)
     for result in results:
         await message.reply_text(format_result(result))
+
